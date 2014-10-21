@@ -1,0 +1,6 @@
+jid=foo@bar
+nickname=foobot
+password=foobar
+server=xmpp.net
+port=5222
+channels=foo1@ac.me,foo2@ac.me
