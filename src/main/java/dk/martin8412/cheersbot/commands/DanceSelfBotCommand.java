@@ -12,8 +12,7 @@ public final class DanceSelfBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(DanceSelfBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!dance") && bodyparts.length == 1 && bodyparts[0].length() == 6) {
+        if(bodyparts.length == 1 && bodyparts[0].equals("!dance")) {
             try {
                 muc.sendMessage("/me danser sammen med " + sender.split("/")[1]);
             } catch (XMPPException | SmackException.NotConnectedException e) {

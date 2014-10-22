@@ -14,8 +14,7 @@ public final class DrinkSelfBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(DrinkSelfBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!drink") && bodyparts.length == 1 && bodyparts[0].length() == 6) {
+        if(bodyparts.length == 1 && bodyparts[0].equals("!drink")) {
             int sips = random.nextInt(12) + 1;
             try {
                 if (sips == 12) {

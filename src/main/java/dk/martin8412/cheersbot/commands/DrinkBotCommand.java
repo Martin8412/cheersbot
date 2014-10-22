@@ -14,17 +14,20 @@ public final class DrinkBotCommand implements IBotCommand{
     private static final Logger logger = Logger.getLogger(DrinkBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!drink") && bodyparts.length == 2 && bodyparts[0].length() == 6) {
+        if(bodyparts.length >= 2 && bodyparts[0].equals("!drink")) {
             int sips = random.nextInt(12) + 1;
             try {
-                if (sips == 12) {
-                    muc.sendMessage(bodyparts[1] + " skal bunde en øl");
+                if(bodyparts[1].equals(muc.getNickname())) {
+                    muc.sendMessage(sender.split("/")[1] + " skal bunde en øl");
                 } else {
-                    if (sips == 1) {
-                        muc.sendMessage(bodyparts[1] + " skal drikke en slurk");
+                    if (sips == 12) {
+                        muc.sendMessage(bodyparts[1] + " skal bunde en øl");
                     } else {
-                        muc.sendMessage(bodyparts[1] + " skal drikke " + sips + " slurke");
+                        if (sips == 1) {
+                            muc.sendMessage(bodyparts[1] + " skal drikke en slurk");
+                        } else {
+                            muc.sendMessage(bodyparts[1] + " skal drikke " + sips + " slurke");
+                        }
                     }
                 }
             } catch(XMPPException | SmackException.NotConnectedException e) {

@@ -12,8 +12,7 @@ public final class HugBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(HugBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!hug") && bodyparts.length == 2 && bodyparts[0].length() == 4) {
+        if(bodyparts.length >= 2 && bodyparts[0].equals("!hug")) {
             try {
                 muc.sendMessage("/me hugs " + bodyparts[1]);
             } catch (XMPPException | SmackException.NotConnectedException e) {

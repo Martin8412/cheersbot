@@ -15,9 +15,7 @@ public final class JokeBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(JokeBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-
-        if(body.startsWith("!joke") && bodyparts.length == 1 && bodyparts[0].length() == 5) {
+        if(bodyparts.length == 1 && bodyparts[0].equals("!joke")) {
             try {
                 muc.sendMessage(Phrases.jokePhrases[random.nextInt(Phrases.jokePhrases.length)]);
             } catch (XMPPException | SmackException.NotConnectedException e) {

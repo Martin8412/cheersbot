@@ -15,8 +15,7 @@ public final class GangsterBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(GangsterBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!G") && bodyparts[0].length() == 2 && bodyparts.length == 2) {
+        if(bodyparts.length >= 2 &&  bodyparts[0].equals("!G")) {
             try {
                 muc.sendMessage(bodyparts[1] + ", " + Phrases.hardPhrases[random.nextInt(Phrases.hardPhrases.length)]);
             } catch (XMPPException | SmackException.NotConnectedException e) {

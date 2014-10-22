@@ -12,8 +12,7 @@ public final class NoBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(NoBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith(".no") && bodyparts[0].length() == 3) {
+        if(bodyparts.length >= 1 && bodyparts[0].equals(".no")) {
             try {
                 muc.sendMessage("\u0CA0" + "_" + "\u0CA0");
             } catch (XMPPException | SmackException.NotConnectedException e) {

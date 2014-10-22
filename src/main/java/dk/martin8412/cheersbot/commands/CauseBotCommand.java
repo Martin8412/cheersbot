@@ -15,8 +15,7 @@ public final class CauseBotCommand implements IBotCommand {
     private static final SecureRandom random = new SecureRandom();
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!cause") && bodyparts.length == 1 && bodyparts[0].length() == 6) {
+        if(bodyparts.length >= 1 &&  bodyparts[0].equals("!cause")) {
             try {
                 muc.sendMessage("The cause of the problem is that, " + Phrases.bofhPhrases[random.nextInt(Phrases.bofhPhrases.length)]);
             } catch (XMPPException | SmackException.NotConnectedException e) {

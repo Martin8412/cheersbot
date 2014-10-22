@@ -15,8 +15,7 @@ public final class CheersSelfBotCommand implements IBotCommand {
     private static final Logger logger = Logger.getLogger(CheersSelfBotCommand.class.getName());
     @Override
     public void notifyListener(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
-        String body = message.getBody();
-        if(body.startsWith("!s") && bodyparts.length == 1 && bodyparts[0].length() == 2) {
+        if(bodyparts.length == 1 && bodyparts[0].equals("!s")) {
             try {
                 muc.sendMessage(Phrases.cheersPhrases[random.nextInt(Phrases.cheersPhrases.length)]);
             } catch (XMPPException | SmackException.NotConnectedException e) {
