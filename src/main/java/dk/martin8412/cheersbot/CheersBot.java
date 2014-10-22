@@ -138,9 +138,9 @@ public class CheersBot implements Commands {
             muc.addMessageListener(packet -> {
                 if(packet instanceof Message) {
                     Message mes = (Message) packet;
-                    String sender = mes.getFrom();
-                    String[] bodyparts = mes.getBody().split(" ");
-                    if(muc != null && sender != null) {
+                    if(muc != null && mes.getFrom() != null && mes.getBody() != null) {
+                        String sender = mes.getFrom();
+                        String[] bodyparts = mes.getBody().split(" ");
                         notifyUsers(muc, mes, bodyparts, sender);
                     }
                 }
