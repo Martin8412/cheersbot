@@ -141,7 +141,9 @@ public class CheersBot implements Commands {
                     if(muc != null && mes.getFrom() != null && mes.getBody() != null) {
                         String sender = mes.getFrom();
                         String[] bodyparts = mes.getBody().split(" ");
-                        notifyUsers(muc, mes, bodyparts, sender);
+                        if(!sender.split("/")[1].equals(nickname)) {
+                            notifyUsers(muc, mes, bodyparts, sender);
+                        }
                     }
                 }
             });
