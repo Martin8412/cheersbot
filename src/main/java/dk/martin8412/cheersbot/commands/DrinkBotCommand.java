@@ -17,7 +17,7 @@ public final class DrinkBotCommand implements IBotCommand{
         if(bodyparts.length >= 2 && bodyparts[0].equals("!drink")) {
             int sips = random.nextInt(12) + 1;
             try {
-                if(bodyparts[1].equals(muc.getNickname())) {
+                if(bodyparts[1].toLowerCase().equals(muc.getNickname().toLowerCase())) {
                     muc.sendMessage(sender.split("/")[1] + " skal bunde en øl");
                 } else {
                     if (sips == 12) {
