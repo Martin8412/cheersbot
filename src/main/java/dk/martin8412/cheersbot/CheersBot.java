@@ -107,6 +107,7 @@ public class CheersBot implements Commands {
     @Override
     public void notifyUsers(MultiUserChat muc, Message message, String[] bodyparts, String sender) {
         for(IBotCommand command : commands) {
+	    System.out.println("Notifying subscriber");
             command.notifyListener(muc, message, bodyparts, sender);
         }
     }
