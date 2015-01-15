@@ -83,8 +83,10 @@ public class CheersBot implements Commands {
 
         MultiUserChat.addInvitationListener(xmpp, (xmppConnection, room, inviter, reason, password1, message) -> {
             if(password1 != null && !password1.isEmpty()) {
+		System.out.println("Joining MUC " + room);
                 joinChannel(room, password1);
             } else {
+		System.out.println("Joining MUC " + room);
                 joinChannel(room);
             }
         });
